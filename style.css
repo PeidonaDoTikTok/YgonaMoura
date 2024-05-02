@@ -8,7 +8,7 @@ body{
 }
 
 .cabeçalho {
-    background-color: #880404;
+    background-color: #ffffff;
     display: flex;
     padding: 24px 0;
     justify-content: space-around;
@@ -16,7 +16,7 @@ body{
 }
 
 .cabeçalho-título {
-    color: #6ce1e6;
+    color: #9b0707;
     font-size: 48px;
 }
 
