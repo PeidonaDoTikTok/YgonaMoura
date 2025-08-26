@@ -14,7 +14,7 @@ def calcular_media():
     media = sum(notas) / len(notas)
     print(f"Média anual: {media:.2f}")
 
-calcular_media()
+#calcular_media()
 
 
 
@@ -39,8 +39,83 @@ for i in range(qtd):
     valor = input(f"Digite o elemento {i+1} (pode ser número ou mensagem): ")
     lista_mista.append(valor)
 
-separar_numeros(lista_mista)
+#separar_numeros(lista_mista)
 
 
+#criar uma lista com cadastro de usuario
+#cadastrar-alterar-excluir-listar=usar(função,lista,try/except,laços)
 
+
+usuarios = []
+
+def cadastrar_usuario():
+    try:
+        nome = input("Digite o nome do usuário: ")
+        idade = int(input("Digite a idade: "))
+        email = input("Digite o email: ")
+        usuario = {"nome": nome, "idade": idade, "email": email}
+        usuarios.append(usuario)
+        print("Usuário cadastrado com sucesso!\n")
+    except:
+        print("Erro ao cadastrar. Verifique os dados e tente novamente.\n")
+
+def listar_usuarios():
+    if len(usuarios) == 0:
+        print("Nenhum usuário cadastrado.\n")
+    else:
+        for i, u in enumerate(usuarios):
+            print(f"{i} - Nome: {u['nome']}, Idade: {u['idade']}, Email: {u['email']}")
+        print()
+
+def alterar_usuario():
+    listar_usuarios()
+    try:
+        indice = int(input("Digite o número do usuário que deseja alterar: "))
+        if 0 <= indice < len(usuarios):
+            nome = input("Novo nome: ")
+            idade = int(input("Nova idade: "))
+            email = input("Novo email: ")
+            usuarios[indice] = {"nome": nome, "idade": idade, "email": email}
+            print("Usuário alterado com sucesso!\n")
+        else:
+            print("Índice inválido.\n")
+    except:
+        print("Erro ao alterar usuário.\n")
+
+def excluir_usuario():
+    listar_usuarios()
+    try:
+        indice = int(input("Digite o número do usuário que deseja excluir: "))
+        if 0 <= indice < len(usuarios):
+            usuarios.pop(indice)
+            print("Usuário excluído com sucesso!\n")
+        else:
+            print("Índice inválido.\n")
+    except:
+        print("Erro ao excluir usuário.\n")
+
+def menu():
+    while True:
+        print("1 - Cadastrar usuário")
+        print("2 - Listar usuários")
+        print("3 - Alterar usuário")
+        print("4 - Excluir usuário")
+        print("5 - Sair")
+        opcao = input("Escolha uma opção: ")
+
+        if opcao == "1":
+            cadastrar_usuario()
+        elif opcao == "2":
+            listar_usuarios()
+        elif opcao == "3":
+            alterar_usuario()
+        elif opcao == "4":
+            excluir_usuario()
+        elif opcao == "5":
+            print("Saindo...")
+            break
+        else:
+            print("Opção inválida.\n")
+
+menu()
 
